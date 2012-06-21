@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TVViewController : UIViewController
-
+@class ArtView;
+@interface TVViewController : UIViewController {
+    UIView *_oldGrid;
+    NSTimer *_timer;
+}
+@property (retain, nonatomic) IBOutlet UIView *grid;
+@property (retain, nonatomic) IBOutlet ArtView *artView;
+- (void)showFullTv:(NSDictionary *)art;
+- (void)hideFullTv;
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GenreDataSource : NSObject
-
+@interface GenreDataSource : NSObject<UITableViewDelegate, UITableViewDataSource> {
+    NSArray *_data;
+}
 @end

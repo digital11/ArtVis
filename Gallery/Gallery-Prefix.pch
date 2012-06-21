@@ -11,4 +11,6 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+#define API(s) [NSString stringWithFormat:@"http://studio1-01.webhop.net:8888/api/%@", s]
 #endif
+

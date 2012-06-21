@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DataSelectorViewController : UITableViewController
-
+@property (nonatomic, strong) id dataSource;
 @end

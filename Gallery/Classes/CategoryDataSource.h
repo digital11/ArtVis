@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CategoryDataSource : NSObject
-
+@interface CategoryDataSource :  NSObject<UITableViewDelegate, UITableViewDataSource> {
+    NSArray *_data;
+}
 @end

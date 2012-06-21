@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ArtistDataSource : NSObject
+@interface ArtistDataSource : NSObject<UITableViewDelegate, UITableViewDataSource> {
+    NSArray *_data;
+}
 
 @end

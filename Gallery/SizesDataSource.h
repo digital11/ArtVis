@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SizesDataSource : NSObject
-
+@interface SizesDataSource : NSObject<UITableViewDelegate, UITableViewDataSource> {
+    NSArray *_data;
+}
+-(id) init:(NSArray *)data;
 @end

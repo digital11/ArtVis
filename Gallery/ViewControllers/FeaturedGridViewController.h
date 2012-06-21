@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeaturedGridViewController : UIViewController
-
+@interface FeaturedGridViewController : UIViewController {
+    
+    UIView *_oldGrid;
+    NSTimer *_timer;
+    BOOL _inited;
+}
+@property (retain, nonatomic) IBOutlet UIView *grid;
+- (id)initWithFrame:(CGRect)frame;
 @end

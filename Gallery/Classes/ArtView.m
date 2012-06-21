@@ -9,6 +9,7 @@
 #import "ArtView.h"
 
 @implementation ArtView
+@synthesize art;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -17,6 +18,10 @@
         // Initialization code
     }
     return self;
+}
+- (void)dealloc {
+    [art release];
+    [super dealloc];
 }
 
 /*

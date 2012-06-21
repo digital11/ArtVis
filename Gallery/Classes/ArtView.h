@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ArtView : UIImageView
+@property (nonatomic, strong) NSDictionary *art;
 
 @end
