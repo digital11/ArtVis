@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QRootElement.h"
+#import "QEntryElement.h"
+#import "QTextElement.h"
+#import "QuickDialogController.h"
+
 @class ArtView;
-@interface FullViewController : UIViewController<UIScrollViewDelegate> {
+@interface FullViewController : UIViewController<UIScrollViewDelegate, UIPopoverControllerDelegate> {
     CGRect _oldFrame;
     BOOL _isFull;
+    UIPopoverController *_popover;
+    
 }
 @property (nonatomic, strong) NSDictionary *art;
 - (IBAction)tap:(id)sender;
@@ -21,6 +28,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *pieceLabel;
 @property (retain, nonatomic) IBOutlet UILabel *pieceText;
 @property (retain, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (retain, nonatomic) IBOutlet UILabel *artTitle;
 @property (retain, nonatomic) IBOutlet UIButton *viewSize1;
 @property (retain, nonatomic) IBOutlet UIButton *viewSize2;
 @property (retain, nonatomic) IBOutlet UIScrollView *imageScroller;
@@ -29,6 +37,8 @@
 - (void)populate:(NSDictionary *)art;
 - (IBAction)back:(id)sender;
 @property (retain, nonatomic) IBOutlet UIButton *fullscreenBtn;
+- (IBAction)email:(id)sender;
+- (IBAction)showing:(id)sender;
 
 - (IBAction)related:(id)sender;
 @property (retain, nonatomic) IBOutlet ArtView *related1;

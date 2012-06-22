@@ -32,6 +32,7 @@
 @synthesize sizeLabel = _sizeLabel;
 @synthesize viewSize1 = _viewSize1;
 @synthesize viewSize2 = _viewSize2;
+@synthesize artTitle = _artTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,6 +92,7 @@
     [self setSizeLabel:nil];
     [self setViewSize1:nil];
     [self setViewSize2:nil];
+    [self setArtTitle:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -115,6 +117,7 @@
     [_sizeLabel release];
     [_viewSize1 release];
     [_viewSize2 release];
+    [_artTitle release];
     [super dealloc];
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -138,7 +141,7 @@
     _image.contentMode = UIViewContentModeScaleAspectFill;
     _image.clipsToBounds = YES;
     NSDictionary *artist = [AppDelegate getArtist:[[art objectForKey:@"artistId"] intValue]];
-    
+    _artTitle.text = [art objectForKey:@"title"];
     _artistText.text = [artist objectForKey:@"title"];
     _artistText.numberOfLines = 0;
     frame = _artistText.frame;
@@ -147,8 +150,19 @@
     [_artistText sizeToFit];
     
     
-    frame = _bioLabel.frame;
+    _pieceLabel.hidden = YES;
+    frame = _pieceText.frame;
     frame.origin.y = _artistText.frame.size.height + _artistText.frame.origin.y + 15;
+    _pieceText.text = [art objectForKey:@"description"];
+
+    frame.size.height = 0;
+//    frame.origin.y = _pieceLabel.frame.origin.y + _pieceLabel.frame.size.height + 5;
+    _pieceText.frame = frame;
+    _pieceText.numberOfLines = 0;
+    [_pieceText sizeToFit];
+    
+    frame = _bioLabel.frame;
+    frame.origin.y = _pieceText.frame.size.height + _pieceText.frame.origin.y + 15;
     _bioLabel.frame = frame;
     _bioText.text = [artist objectForKey:@"bio"];
     frame = _bioText.frame;
@@ -158,20 +172,10 @@
     _bioText.numberOfLines = 0;
     [_bioText sizeToFit];
     
-    frame = _pieceLabel.frame;
-    frame.origin.y = _bioText.frame.size.height + _bioText.frame.origin.y + 15;
-    _pieceLabel.frame = frame;
-    _pieceText.text = [art objectForKey:@"description"];
-    frame = _pieceText.frame;
-    frame.size.height = 0;
-    frame.origin.y = _pieceLabel.frame.origin.y + _pieceLabel.frame.size.height + 5;
-    _pieceText.frame = frame;
-    _pieceText.numberOfLines = 0;
-    [_pieceText sizeToFit];
     
     
     frame = _sizeLabel.frame;
-    frame.origin.y = _pieceText.frame.size.height + _pieceText.frame.origin.y + 15;
+    frame.origin.y = _bioText.frame.size.height + _bioText.frame.origin.y + 15;
     _sizeLabel.frame = frame;
     
     frame = _viewSize1.frame;

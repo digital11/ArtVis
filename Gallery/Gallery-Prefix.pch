@@ -12,5 +12,24 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #define API(s) [NSString stringWithFormat:@"http://studio1-01.webhop.net:8888/api/%@", s]
+
+#import "QuickDialogController.h"
+#import "QuickDialogController+Loading.h"
+#import "QuickDialogStyleProvider.h"
+#import "QLabelElement.h"
+#import "QBadgeElement.h"
+#import "QBooleanElement.h"
+#import "QButtonElement.h"
+#import "QDateTimeInlineElement.h"
+#import "QListPickerInlineElement.h"
+#import "QFloatElement.h"
+#import "QMapElement.h"
+#import "QRadioElement.h"
+#import "QRadioItemElement.h"
+#import "QTextElement.h"
+#import "QWebElement.h"
+#import "QDecimalElement.h"
+#import "QSortingSection.h"
+#import "QDateTimeElement.h"
 #endif
 

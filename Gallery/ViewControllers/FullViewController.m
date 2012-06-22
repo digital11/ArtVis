@@ -14,6 +14,8 @@
 #import "DataSelectorViewController.h"
 #import "SizesDataSource.h"
 
+
+
 @implementation FullViewController
 @synthesize fullscreenBtn = _fullscreenBtn;
 @synthesize related1 = _related1;
@@ -27,6 +29,7 @@
 @synthesize pieceLabel = _pieceLabel;
 @synthesize pieceText = _pieceText;
 @synthesize sizeLabel = _sizeLabel;
+@synthesize artTitle = _artTitle;
 @synthesize viewSize1 = _viewSize1;
 @synthesize viewSize2 = _viewSize2;
 @synthesize imageScroller = _imageScroller;
@@ -69,6 +72,7 @@
     [_related3 release];
     [_related4 release];
     [_imageScroller release];
+    [_artTitle release];
     [super dealloc];
     
 }
@@ -101,6 +105,7 @@
     [self setRelated3:nil];
     [self setRelated4:nil];
     [self setImageScroller:nil];
+    [self setArtTitle:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -157,6 +162,7 @@
     _image.clipsToBounds = YES;
     NSDictionary *artist = [AppDelegate getArtist:[[art objectForKey:@"artistId"] intValue]];
     
+    _artTitle.text = [art objectForKey:@"title"];
     _artistText.text = [artist objectForKey:@"artist"];
     _artistText.numberOfLines = 0;
     frame = _artistText.frame;
@@ -166,40 +172,38 @@
     [_artistText sizeToFit];
     
     
-    frame = _bioLabel.frame;
+    _pieceLabel.hidden = YES;
+    frame = _pieceText.frame;
     frame.origin.y = _artistText.frame.size.height + _artistText.frame.origin.y + 15;
+    _pieceText.text = [art objectForKey:@"description"];
+    
+    frame.size.height = 0;
+    //    frame.origin.y = _pieceLabel.frame.origin.y + _pieceLabel.frame.size.height + 5;
+    _pieceText.frame = frame;
+    _pieceText.numberOfLines = 0;
+    [_pieceText sizeToFit];
+    
+    frame = _bioLabel.frame;
+    frame.origin.y = _pieceText.frame.size.height + _pieceText.frame.origin.y + 15;
     _bioLabel.frame = frame;
     _bioText.text = [artist objectForKey:@"bio"];
     frame = _bioText.frame;
     frame.size.height = 0;
-    frame.size.width = 223;
     frame.origin.y = _bioLabel.frame.origin.y + _bioLabel.frame.size.height + 5;
     _bioText.frame = frame;
     _bioText.numberOfLines = 0;
     [_bioText sizeToFit];
     
-    frame = _pieceLabel.frame;
-    frame.origin.y = _bioText.frame.size.height + _bioText.frame.origin.y + 15;
-    _pieceLabel.frame = frame;
-    _pieceText.text = [art objectForKey:@"description"];
-    frame = _pieceText.frame;
-    frame.size.height = 0;
-    frame.size.width = 223;
-    frame.origin.y = _pieceLabel.frame.origin.y + _pieceLabel.frame.size.height + 5;
-    _pieceText.frame = frame;
-    _pieceText.numberOfLines = 0;
-    [_pieceText sizeToFit];
     
     
     frame = _sizeLabel.frame;
-    frame.origin.y = _pieceText.frame.size.height + _pieceText.frame.origin.y + 15;
+    frame.origin.y = _bioText.frame.size.height + _bioText.frame.origin.y + 15;
     _sizeLabel.frame = frame;
     
     frame = _viewSize1.frame;
     frame.origin.y = _sizeLabel.frame.origin.y + _sizeLabel.frame.size.height + 5;
     _viewSize1.frame = frame;
     frame = _viewSize2.frame;
-    frame.size.width = 223;
     frame.origin.y = _sizeLabel.frame.origin.y + _sizeLabel.frame.size.height + 5;
     _viewSize2.frame = frame;
     
@@ -245,6 +249,130 @@
     _image.userInteractionEnabled = NO;
     [(UINavigationController *)[[[AppDelegate sharedAppDelegate] window] rootViewController] popViewControllerAnimated:YES];
 }
+- (void)sendShowing:(NSDictionary *)dict {
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API(@"art/send_showing/?email=%@&id=%@&uname=%@&phone=%@"),[[dict objectForKey:@"email"] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],[[[_art objectForKey:@"id"] stringValue]stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],[[dict objectForKey:@"name"]stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],[[dict objectForKey:@"phone"]stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        
+    }];
+    [operation start];
+    [_popover dismissPopoverAnimated:YES];
+    [_popover release];
+    _popover = nil;
+}
+- (void)sendEmail:(NSDictionary *)dict {
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API(@"art/send_art/?email=%@&id=%@"),[[dict objectForKey:@"email"]stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],[[[_art objectForKey:@"id"] stringValue]stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+                
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        
+    }];
+    [operation start];
+    [_popover dismissPopoverAnimated:YES];
+    [_popover release];
+    _popover = nil;
+}
+- (IBAction)email:(id)sender {
+    QRootElement *root = [[QRootElement alloc] init];
+    root.title = @"Email art to yourself";
+    root.grouped = YES;
+    QSection *section = [[QSection alloc] init];
+    QTextElement *text = [[QTextElement alloc] initWithText:@"Enter your email address to receive an email with a comp of the artwork."];
+    QEntryElement *email = [[[QEntryElement alloc] init] autorelease];
+    email.title = @"Email";
+    email.key = @"email";
+    email.hiddenToolbar = YES;
+    email.placeholder = @"johndoe@me.com";
+    email.alignValueField = NO;
+    email.required = YES;
+    
+    
+    [root addSection:section];
+    [section addElement:text];
+    [section addElement:email];
+    [text release];
+    [email release];
+    
+    section = [[QSection alloc] init];
+    QButtonElement *btn = [[QButtonElement alloc] initWithTitle:@"Send" andDelegate:self andSelector:@selector(sendEmail:)];
+    [section addElement:btn];
+    [root addSection:section];
+    
+    UINavigationController *nav = [QuickDialogController controllerWithNavigationForRoot:root];
+    if (_popover)
+        [_popover release];
+    _popover = [[[UIPopoverController alloc] initWithContentViewController:nav] retain];
+    [root release];
+    [_popover presentPopoverFromRect:[sender frame] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+}
+
+- (IBAction)showing:(id)sender {
+    QRootElement *root = [[QRootElement alloc] init];
+    root.title = @"Request a showing";
+    root.grouped = YES;
+    QSection *section = [[QSection alloc] init];
+    QTextElement *text = [[QTextElement alloc] initWithText:@"Enter your information to request a private showing of this piece."];
+    
+    [section addElement:text];
+    QEntryElement *email = [[[QEntryElement alloc] init] autorelease];
+    email.title = @"Email";
+    email.key = @"email";
+    email.hiddenToolbar = YES;
+    email.placeholder = @"johndoe@me.com";
+    email.alignValueField = NO;
+    email.required = YES;
+    [section addElement:email];
+    [email release];
+    
+    email = [[[QEntryElement alloc] init] autorelease];
+    email.title = @"Name";
+    email.key = @"name";
+    email.hiddenToolbar = YES;
+    email.placeholder = @"John Doe";
+    email.alignValueField = NO;
+    email.required = YES;
+    [section addElement:email];
+    
+    email = [[[QEntryElement alloc] init] autorelease];
+    email.title = @"Phone #";
+    email.key = @"phone";
+    email.hiddenToolbar = YES;
+    email.placeholder = @"555-555-1212";
+    email.alignValueField = NO;
+    email.required = YES;
+    [section addElement:email];
+    
+    
+    [root addSection:section];
+    [text release];
+    [email release];
+    
+    section = [[QSection alloc] init];
+    QButtonElement *btn = [[QButtonElement alloc] initWithTitle:@"Request Showing" andDelegate:self andSelector:@selector(sendShowing:)];
+    [section addElement:btn];
+    [root addSection:section];
+    
+    UINavigationController *nav = [QuickDialogController controllerWithNavigationForRoot:root];
+    if (_popover)
+        [_popover release];
+    _popover = [[[UIPopoverController alloc] initWithContentViewController:nav] retain];
+    [root release];
+    [_popover presentPopoverFromRect:[sender frame] inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+}
+
 - (IBAction)related:(UIGestureRecognizer *)sender {
     ArtView *av = (ArtView *)sender.view;
     [self populate:av.art];

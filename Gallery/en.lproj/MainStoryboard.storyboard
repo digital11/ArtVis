@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="PIO-PF-Obx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="PIO-PF-Obx">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Item-->
@@ -152,7 +152,7 @@
                                 <rect key="frame" x="0.0" y="683" width="1024" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" clearButtonMode="always" id="j0L-Fh-qSE">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search Art by Keyword" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" clearButtonMode="always" id="j0L-Fh-qSE">
                                         <rect key="frame" x="656" y="27" width="348" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -190,6 +190,10 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="plus.png" id="Ibj-o1-teQ">
+                                                <rect key="frame" x="185" y="66" width="13" height="13"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -342,6 +346,10 @@
                                             <segue destination="Aig-r3-OaD" kind="push" identifier="full" id="OFg-8f-Lj6"/>
                                         </connections>
                                     </button>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="plus.png" id="JAA-BP-JWL">
+                                        <rect key="frame" x="354" y="354" width="13" height="13"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </view>
@@ -352,6 +360,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="artTitle" destination="LKE-1N-Z2p" id="AQD-yc-3FZ"/>
                         <outlet property="artistLabel" destination="LKE-1N-Z2p" id="VJx-75-ofb"/>
                         <outlet property="artistText" destination="1r8-ch-J9G" id="D5V-di-4qT"/>
                         <outlet property="background" destination="lMR-2B-PFs" id="ytD-gE-uwU"/>
@@ -547,6 +556,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="email:" destination="Aig-r3-OaD" eventType="touchUpInside" id="7SU-Os-NhA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FoC-b7-5ux">
                                 <rect key="frame" x="561" y="721" width="165" height="37"/>
@@ -560,6 +572,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showing:" destination="Aig-r3-OaD" eventType="touchUpInside" id="EDr-SX-eL5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eei-Ba-yck">
                                 <rect key="frame" x="0.0" y="0.0" width="99" height="37"/>
@@ -617,6 +632,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="1024" height="768"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="artTitle" destination="ysS-ox-6W9" id="4Tg-hy-FuH"/>
                         <outlet property="artistLabel" destination="ysS-ox-6W9" id="NKA-UV-USE"/>
                         <outlet property="artistText" destination="cdM-JN-JH7" id="WrV-Xx-xDG"/>
                         <outlet property="bioLabel" destination="8iS-U1-CiR" id="1ui-tQ-tU7"/>
@@ -665,16 +681,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffg-ea-sZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="OZu-JC-rFU" customClass="DataSelectorViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AEd-8T-T4l">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Bcy-wj-gB1">
-                                <rect key="frame" x="0.0" y="22" width="250" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="350" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -752,6 +768,7 @@
     <resources>
         <image name="bg-header.png" width="1024" height="74"/>
         <image name="bg.png" width="17" height="13"/>
+        <image name="plus.png" width="13" height="13"/>
         <image name="selected.png" width="104" height="30"/>
     </resources>
     <classes>
@@ -764,6 +781,7 @@
         <class className="DetailDialogViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailDialogViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="artTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="artistText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="background" candidateClass="UIView"/>
@@ -783,8 +801,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FullViewController.h"/>
             <relationships>
                 <relationship kind="action" name="back:"/>
+                <relationship kind="action" name="email:"/>
                 <relationship kind="action" name="related:"/>
+                <relationship kind="action" name="showing:"/>
                 <relationship kind="action" name="tap:"/>
+                <relationship kind="outlet" name="artTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="artistText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="bioLabel" candidateClass="UILabel"/>

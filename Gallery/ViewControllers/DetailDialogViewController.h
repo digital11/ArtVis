@@ -25,6 +25,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *sizeLabel;
 @property (retain, nonatomic) IBOutlet UIButton *viewSize1;
 @property (retain, nonatomic) IBOutlet UIButton *viewSize2;
+@property (retain, nonatomic) IBOutlet UILabel *artTitle;
 
 - (void)populate:(NSDictionary *)art;
 @end
