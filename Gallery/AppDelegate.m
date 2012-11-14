@@ -10,9 +10,11 @@
 #import "AFURLCache.h"
 #import "AFJSONRequestOperation.h"
 #import "TVViewController.h"
+#import "OrientationPickerViewController.h"
 
 @implementation AppDelegate
 
+@synthesize orientationPicker = _orientationPicker;
 @synthesize window = _window;
 @synthesize artists = _artists;
 @synthesize tv = _tv;
@@ -92,27 +94,105 @@
         NSLog(@"Error: %@", error);
     }];
     [operation start];
-    if ([[UIScreen screens] count] > 1) {
-        [self initAppleTv:nil];
-    }
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initAppleTv:) name:UIScreenDidConnectNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(destroyAppleTv:) name:UIScreenDidDisconnectNotification object:nil];
     
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    self.orientationPicker = [storyboard instantiateViewControllerWithIdentifier:@"orientation"];
+    //
+    if ([[UIScreen screens] count] > 1) {
+        [self performSelector:@selector(initAppleTv:) withObject:nil afterDelay:1];
+    }
+    
     return YES;
 }
-- (void)initAppleTv:(NSNotification *)note {
+- (void)showTv:(BOOL)portrait {
     UIScreen *screen = [[UIScreen screens] objectAtIndex:1];
-    screen.overscanCompensation = UIScreenOverscanCompensationInsetApplicationFrame;
+    
+    
+    
+    CGRect        screenBounds = screen.bounds;
+    
+
+    
+    screen.overscanCompensation = UIScreenOverscanCompensationScale;
     NSLog(@"%@\n%@",screen.preferredMode,screen.availableModes);
-    self.tvWindow = [[UIWindow alloc] initWithFrame:screen.applicationFrame];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-400, -400, 9000, 9000)];
+    view.backgroundColor = [UIColor redColor];
+    
+    self.tvWindow = [[UIWindow alloc] initWithFrame:screen.bounds];
     _tvWindow.screen = screen;
+    _tvWindow.frame = screenBounds;
+    _tvWindow.clipsToBounds = YES;
+    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     self.tv = [storyboard instantiateViewControllerWithIdentifier:@"tv"];
+    self.tv.isPortrait = portrait;
+    self.tv.noGrid = YES;
+    self.tv.view.clipsToBounds = YES;
     _tvWindow.rootViewController = _tv;
     
+    
     [_tvWindow makeKeyAndVisible];
+    
+//    UIView *calib = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _window.rootViewController.view.frame.size.width, _window.rootViewController.view.frame.size.height)];
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 1000, 100)];
+//    label.backgroundColor = [UIColor redColor];
+//    label.textColor = [UIColor blackColor];
+//    label.tag = 555;
+//    calib.backgroundColor = [UIColor greenColor];
+//    [_tvWindow addSubview:label];
+//    [_window.rootViewController.view addSubview:calib];
+//    
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+//    [calib addGestureRecognizer:pan];
+//    
+//    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
+//    [calib addGestureRecognizer:pinch];
+//    
+//    _origH = self.tv.view.frame.size.height;
+//    _origW = self.tv.view.frame.size.width;
+//    _lastScale = 1.0;
+//    _currentScale = 1.0;
+    
+}
+- (void)pinch:(UIPinchGestureRecognizer *)gesture {
+
+    if ([gesture state] == UIGestureRecognizerStateEnded) {
+        _lastScale = 1.0;
+        _origH = self.tv.view.frame.size.height;
+        _origW = self.tv.view.frame.size.width;
+    }
+    if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) {
+        _currentScale += [gesture scale] - _lastScale;
+
+        _lastScale = [gesture scale];
+        
+        CGRect frame = self.tv.view.frame;
+        frame.size.width = _origW + (_origW * _currentScale);
+        frame.size.height = _origH + (_origH * _currentScale);
+        self.tv.view.frame = frame;
+        
+        [(UILabel*)[_tvWindow viewWithTag:555] setText:[NSString stringWithFormat:@"Scale: %f - Frame: %@",_currentScale,NSStringFromCGRect(self.tv.view.frame)]];
+    }
+}
+-(void)pan:(UIPanGestureRecognizer *)gesture {
+    if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) {
+        
+        CGPoint translation = [gesture translationInView:[gesture.view superview]];
+        [self.tv.view setCenter:CGPointMake([self.tv.view center].x + translation.x, [self.tv.view center].y+translation.y*0.1)];
+        
+        [gesture setTranslation:CGPointZero inView:[gesture.view superview]];
+        
+        [(UILabel*)[_tvWindow viewWithTag:555] setText:NSStringFromCGRect(self.tv.view.frame)];
+    }
+}
+- (void)initAppleTv:(NSNotification *)note {
+    [_window.rootViewController.view addSubview:_orientationPicker.view];
 }
 - (void)destroyAppleTv:(NSNotification *)note {
     self.tv = nil;

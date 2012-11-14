@@ -162,8 +162,10 @@
     _image.clipsToBounds = YES;
     NSDictionary *artist = [AppDelegate getArtist:[[art objectForKey:@"artistId"] intValue]];
     
+
+    
     _artTitle.text = [art objectForKey:@"title"];
-    _artistText.text = [artist objectForKey:@"artist"];
+    _artistText.text = [artist objectForKey:@"title"];
     _artistText.numberOfLines = 0;
     frame = _artistText.frame;
     frame.size.height = 0;

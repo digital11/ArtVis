@@ -42,6 +42,18 @@
     }
     return self;
 }
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"full"]) {
+        
+        FullViewController *full = (FullViewController *)[[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"fullController"];
+        full.art = _art;
+        //[full populate:_art];
+        [(UINavigationController *)[[AppDelegate sharedAppDelegate] window].rootViewController pushViewController:full animated:YES];
+        
+        return NO;
+    }
+    return YES;
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"full"]) {
         FullViewController *full = (FullViewController *)[segue destinationViewController];

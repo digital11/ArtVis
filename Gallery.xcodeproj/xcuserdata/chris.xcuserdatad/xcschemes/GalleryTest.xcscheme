@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
+   LastUpgradeVersion = "0450"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "839E338B156B09530080DD05"
-               BuildableName = "Gallery.app"
-               BlueprintName = "Gallery"
+               BlueprintIdentifier = "83120B7D15B8DF6200A87407"
+               BuildableName = "GalleryTest.app"
+               BlueprintName = "GalleryTest"
                ReferencedContainer = "container:Gallery.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "839E338B156B09530080DD05"
-            BuildableName = "Gallery.app"
-            BlueprintName = "Gallery"
+            BlueprintIdentifier = "83120B7D15B8DF6200A87407"
+            BuildableName = "GalleryTest.app"
+            BlueprintName = "GalleryTest"
             ReferencedContainer = "container:Gallery.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -46,22 +47,18 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      enableOpenGLFrameCaptureMode = "0"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "839E338B156B09530080DD05"
-            BuildableName = "Gallery.app"
-            BlueprintName = "Gallery"
+            BlueprintIdentifier = "83120B7D15B8DF6200A87407"
+            BuildableName = "GalleryTest.app"
+            BlueprintName = "GalleryTest"
             ReferencedContainer = "container:Gallery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -73,9 +70,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "839E338B156B09530080DD05"
-            BuildableName = "Gallery.app"
-            BlueprintName = "Gallery"
+            BlueprintIdentifier = "83120B7D15B8DF6200A87407"
+            BuildableName = "GalleryTest.app"
+            BlueprintName = "GalleryTest"
             ReferencedContainer = "container:Gallery.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

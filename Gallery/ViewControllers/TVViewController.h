@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 @class ArtView;
 @interface TVViewController : UIViewController {
+    NSMutableArray *_art;
+    int _artIndex;
     UIView *_oldGrid;
     NSTimer *_timer;
 }
+@property BOOL isPortrait;
+@property BOOL noGrid;
 @property (retain, nonatomic) IBOutlet UIView *grid;
 @property (retain, nonatomic) IBOutlet ArtView *artView;
 - (void)showFullTv:(NSDictionary *)art;

@@ -18,6 +18,8 @@
 @implementation TVViewController
 @synthesize grid = _grid;
 @synthesize artView = _artView;
+@synthesize isPortrait = _isPortrait;
+@synthesize noGrid = _noGrid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,12 +57,98 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.view.frame = CGRectMake(-60, -20, self.view.frame.size.width + (65*4), self.view.frame.size.height + (40 * 4));
+    
+    //self.view.frame = CGRectMake(-9.5,-.9,1408,777);
+    if (_isPortrait) {
+        
+//        CGRect frame = self.view.frame;
+//        frame.size.width = self.view.frame.size.height;
+//        frame.size.height = self.view.frame.size.width;
+//        self.view.frame = frame;
+        CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI_2);
+        self.view.transform = transform;
+        
+        
+        //self.view.frame = CGRectMake(-9.5,-.9,1408,777);
+    } else {
+        //self.view.frame = CGRectMake(-60, -20, self.view.frame.size.width + (60*4), self.view.frame.size.height + (30 * 4));
 
-    [self displayGrid];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(displayGrid) userInfo:nil repeats:YES];
+    }
+//    self.view.backgroundColor = [UIColor orangeColor];
+    if (_noGrid) {
+        [self displayArt];
+    } else {
+        [self displayGrid];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(displayGrid) userInfo:nil repeats:YES];
+    }
 }
+- (void)nextArt {
+    if (_artIndex > [_art count] - 1)
+        _artIndex = 0;
+    
+    
+    _oldGrid = self.grid;
+    self.grid = [[UIView alloc] initWithFrame:_oldGrid.frame];
+    self.grid.alpha = 0;
+    self.grid.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:self.grid];
+    //[self.view sendSubviewToBack:self.grid];
+    
+    NSDictionary *art = [_art objectAtIndex:_artIndex];
+    NSURL *img = [NSURL URLWithString:[art objectForKey:@"large"]];
+    ArtView *iv = [[ArtView alloc] initWithFrame:CGRectMake(0, 0, self.grid.frame.size.width, self.grid.frame.size.height)];
+    [self.grid addSubview:iv];
+    iv.art = art;
+    iv.backgroundColor = [UIColor blackColor];
 
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    iv.clipsToBounds = YES;
+    [iv setImageWithURL:img placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        [self performSelector:@selector(swapGrid) withObject:nil];
+    }
+                failure:nil];
+    
+    
+    _artIndex++;
+}
+- (void)swapGrid {
+    [UIView animateWithDuration:.5 animations:^{
+        _oldGrid.alpha = 0;
+        self.grid.alpha = 1;
+    } completion:^(BOOL finished) {
+        [self performSelectorOnMainThread:@selector(cleanupGrid) withObject:nil waitUntilDone:NO];
+    }];
+}
+- (void)displayArt {
+    NSURL *url = [NSURL URLWithString:API(@"art/get_art")];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        
+        _art = [[NSMutableArray arrayWithArray:[JSON objectForKey:@"posts"]] retain];
+        static BOOL seeded = NO;
+        if(!seeded)
+            {
+            seeded = YES;
+            srandom(time(NULL));
+            }
+        
+        NSUInteger count = [_art count];
+        for (NSUInteger i = 0; i < count; ++i) {
+            // Select a random element between i and end of array to swap with.
+
+            int n = arc4random_uniform(count);
+            [_art exchangeObjectAtIndex:i withObjectAtIndex:n];
+        }
+        _artIndex = 0;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(nextArt) userInfo:nil repeats:YES];
+        [self nextArt];
+                
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        
+    }];
+    [operation start];
+}
 
 - (void)displayGrid {
     _oldGrid = self.grid;
@@ -71,9 +159,14 @@
     float padding = 5;
     float width,height;
     
-    width = (self.grid.frame.size.width - (padding * 4.0f)) / 5.0f;
-    height = (self.grid.frame.size.height - (padding * 2.0f)) / 3.0f;
+    if (_isPortrait) {
+        width = (self.grid.frame.size.width - (padding * 4.0f)) / 5.0f;
+        height = (self.grid.frame.size.height - (padding * 2.0f)) / 3.0f;
     
+    } else {
+        width = (self.grid.frame.size.width - (padding * 4.0f)) / 5.0f;
+        height = (self.grid.frame.size.height - (padding * 2.0f)) / 3.0f;
+    }
     
     //    http://www.swarmx.com/clients/studio1/index.cfm?api=getARTFEATURE&gridblocks=15
     NSURL *url = [NSURL URLWithString:API(@"art/get_art")];//API(@"api=getARTFEATURE&gridblocks=15")];
@@ -296,7 +389,11 @@
     } completion:^(BOOL finished) {
         
         //[self displayGrid];
-        _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(displayGrid) userInfo:nil repeats:YES];
+        if (_noGrid) {            
+            _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(nextArt) userInfo:nil repeats:YES];
+        } else {
+            _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(displayGrid) userInfo:nil repeats:YES];
+        }
     }];    
 }
 @end

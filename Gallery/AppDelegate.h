@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 @class TVViewController;
+@class OrientationPickerViewController;
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    float _origW;
+    float _origH;
+    float _lastScale;
+    float _currentScale;
+}
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+@property (strong, nonatomic) OrientationPickerViewController *orientationPicker;
 @property (strong, nonatomic) NSArray *sponsors;
 @property (strong, nonatomic) NSArray *artists;
 @property (strong, nonatomic) NSMutableDictionary *artistsDict;
@@ -24,4 +30,5 @@
 + (NSDictionary *) getArtist:(int)byId;
 + (void) showFullTv:(NSDictionary *)art;
 + (void) hideFullTv;
+- (void) showTv:(BOOL)portrait;
 @end
