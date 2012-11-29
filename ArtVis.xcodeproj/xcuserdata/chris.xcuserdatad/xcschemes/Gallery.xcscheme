@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "839E338B156B09530080DD05"
-               BuildableName = "Gallery.app"
-               BlueprintName = "Gallery"
-               ReferencedContainer = "container:Gallery.xcodeproj">
+               BuildableName = "ArtVis.app"
+               BlueprintName = "ArtVis"
+               ReferencedContainer = "container:ArtVis.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "839E338B156B09530080DD05"
-            BuildableName = "Gallery.app"
-            BlueprintName = "Gallery"
-            ReferencedContainer = "container:Gallery.xcodeproj">
+            BuildableName = "ArtVis.app"
+            BlueprintName = "ArtVis"
+            ReferencedContainer = "container:ArtVis.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "839E338B156B09530080DD05"
-            BuildableName = "Gallery.app"
-            BlueprintName = "Gallery"
-            ReferencedContainer = "container:Gallery.xcodeproj">
+            BuildableName = "ArtVis.app"
+            BlueprintName = "ArtVis"
+            ReferencedContainer = "container:ArtVis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,9 +74,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "839E338B156B09530080DD05"
-            BuildableName = "Gallery.app"
-            BlueprintName = "Gallery"
-            ReferencedContainer = "container:Gallery.xcodeproj">
+            BuildableName = "ArtVis.app"
+            BlueprintName = "ArtVis"
+            ReferencedContainer = "container:ArtVis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

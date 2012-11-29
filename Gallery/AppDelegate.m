@@ -11,6 +11,7 @@
 #import "AFJSONRequestOperation.h"
 #import "TVViewController.h"
 #import "OrientationPickerViewController.h"
+#import "SVProgressHUD.h"
 
 @implementation AppDelegate
 
@@ -33,7 +34,7 @@
     [super dealloc];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (void)fillCache
 {
     // Override point for customization after application launch.
     AFURLCache *URLCache = [[[AFURLCache alloc] initWithMemoryCapacity:1024*1024 * 50   // 1MB mem cache
@@ -53,7 +54,7 @@
             [self.artistsDict setObject:dict forKey:[NSNumber numberWithInt:[[dict objectForKey:@"id"] intValue]]];
         }
         
-       
+        
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Error: %@", error);
     }];
@@ -64,7 +65,7 @@
     
     operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        self.categories = [JSON objectForKey:@"categories"];                
+        self.categories = [JSON objectForKey:@"categories"];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Error: %@", error);
@@ -76,25 +77,49 @@
     
     operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        self.genres = [JSON objectForKey:@"categories"];                
+        self.genres = [JSON objectForKey:@"categories"];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Error: %@", error);
     }];
     [operation start];
-
+    
     url = [NSURL URLWithString:API(@"art/get_sponsors/")];//API(@"api=getARTFEATURE&gridblocks=15")];
     req = [NSURLRequest requestWithURL:url];
     
     operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:req success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         
-        self.sponsors = [JSON objectForKey:@"posts"];                
+        self.sponsors = [JSON objectForKey:@"posts"];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Error: %@", error);
     }];
     [operation start];
-    
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [SVProgressHUD showWithStatus:@"Fetching Application Settings" maskType:SVProgressHUDMaskTypeGradient];
+//    [SVProgressHUD showProgress:.25f status:@"Fetching Application Settings" maskType:SVProgressHUDMaskTypeGradient];
+    NSURL *url2 = [NSURL URLWithString:API(@"art/get_last_update/")];//API(@"api=getARTFEATURE&gridblocks=15")];
+    NSURLRequest *req2 = [NSURLRequest requestWithURL:url2];
+    AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:req2 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        int last = [[NSUserDefaults standardUserDefaults] integerForKey:@"last_update"];
+        if (last < [[JSON objectForKey:@"last"] intValue]) {
+            [[NSUserDefaults standardUserDefaults] setInteger:[[JSON objectForKey:@"last"] intValue] forKey:@"last_update"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [self fillCache];
+        } else {
+            [SVProgressHUD showSuccessWithStatus:@"Loaded"];
+        }
+        
+        
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [SVProgressHUD showSuccessWithStatus:@"Using Local Data"];
+    }];
+    [op start];
+    [op waitUntilFinished];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initAppleTv:) name:UIScreenDidConnectNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(destroyAppleTv:) name:UIScreenDidDisconnectNotification object:nil];

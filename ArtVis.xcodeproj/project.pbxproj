@@ -200,9 +200,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		83120BE315B8DF6200A87407 /* GalleryTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalleryTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		83120BE515B8DF6200A87407 /* Gallery copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gallery copy-Info.plist"; path = "/Users/chris/Dropbox/Documents/iPhoneApps/Gallery/Gallery copy-Info.plist"; sourceTree = "<absolute>"; };
-		83120BE715B8DFC100A87407 /* GalleryTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GalleryTest-Prefix.pch"; sourceTree = "<group>"; };
+		83120BE315B8DF6200A87407 /* ArtVisTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtVisTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83120BE515B8DF6200A87407 /* ArtVis-test.info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ArtVis-test.info.plist"; path = "/Users/chris/Dropbox/Documents/iPhoneApps/Gallery/ArtVis-test.info.plist"; sourceTree = "<absolute>"; };
+		83120BE715B8DFC100A87407 /* ArtVisTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArtVisTest-Prefix.pch"; sourceTree = "<group>"; };
 		831210AC1594A9E100EF9530 /* bg-orientation-picker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-orientation-picker.png"; sourceTree = "<group>"; };
 		831210AD1594A9E100EF9530 /* bg-orientation-picker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-orientation-picker@2x.png"; sourceTree = "<group>"; };
 		831210AE1594A9E100EF9530 /* btn-tv-landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-tv-landscape.png"; sourceTree = "<group>"; };
@@ -240,14 +240,14 @@
 		838FCCF2158FA76600248C23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		838FCCF4158FA8E800248C23 /* SponsorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SponsorViewController.h; path = ViewControllers/SponsorViewController.h; sourceTree = "<group>"; };
 		838FCCF5158FA8E800248C23 /* SponsorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SponsorViewController.m; path = ViewControllers/SponsorViewController.m; sourceTree = "<group>"; };
-		839E338C156B09530080DD05 /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		839E338C156B09530080DD05 /* ArtVis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtVis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		839E3390156B09530080DD05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		839E3392156B09530080DD05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		839E3394156B09530080DD05 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		839E3398156B09530080DD05 /* Gallery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gallery-Info.plist"; sourceTree = "<group>"; };
+		839E3398156B09530080DD05 /* ArtVis-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ArtVis-Info.plist"; sourceTree = "<group>"; };
 		839E339A156B09530080DD05 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		839E339C156B09530080DD05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		839E339E156B09530080DD05 /* Gallery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gallery-Prefix.pch"; sourceTree = "<group>"; };
+		839E339E156B09530080DD05 /* ArtVis-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArtVis-Prefix.pch"; sourceTree = "<group>"; };
 		839E339F156B09530080DD05 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		839E33A0156B09530080DD05 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		839E33A3156B09530080DD05 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -432,18 +432,18 @@
 				83FDAB75156D9AB90007B1B8 /* Icon@2x.png */,
 				83FDAB73156D9A330007B1B8 /* Default-Landscape@2x~ipad.png */,
 				83FDAB71156D9A2F0007B1B8 /* Default-Landscape~ipad.png */,
-				839E3396156B09530080DD05 /* Gallery */,
+				839E3396156B09530080DD05 /* ArtVis */,
 				839E338F156B09530080DD05 /* Frameworks */,
 				839E338D156B09530080DD05 /* Products */,
-				83120BE515B8DF6200A87407 /* Gallery copy-Info.plist */,
+				83120BE515B8DF6200A87407 /* ArtVis-test.info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		839E338D156B09530080DD05 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				839E338C156B09530080DD05 /* Gallery.app */,
-				83120BE315B8DF6200A87407 /* GalleryTest.app */,
+				839E338C156B09530080DD05 /* ArtVis.app */,
+				83120BE315B8DF6200A87407 /* ArtVisTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -459,7 +459,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		839E3396156B09530080DD05 /* Gallery */ = {
+		839E3396156B09530080DD05 /* ArtVis */ = {
 			isa = PBXGroup;
 			children = (
 				833DB8A2157D67D600869D7C /* Images */,
@@ -471,17 +471,18 @@
 				839E33A2156B09530080DD05 /* MainStoryboard.storyboard */,
 				839E3397156B09530080DD05 /* Supporting Files */,
 			);
+			name = ArtVis;
 			path = Gallery;
 			sourceTree = "<group>";
 		};
 		839E3397156B09530080DD05 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				839E3398156B09530080DD05 /* Gallery-Info.plist */,
+				839E3398156B09530080DD05 /* ArtVis-Info.plist */,
 				839E3399156B09530080DD05 /* InfoPlist.strings */,
 				839E339C156B09530080DD05 /* main.m */,
-				839E339E156B09530080DD05 /* Gallery-Prefix.pch */,
-				83120BE715B8DFC100A87407 /* GalleryTest-Prefix.pch */,
+				839E339E156B09530080DD05 /* ArtVis-Prefix.pch */,
+				83120BE715B8DFC100A87407 /* ArtVisTest-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -671,9 +672,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		83120B7D15B8DF6200A87407 /* GalleryTest */ = {
+		83120B7D15B8DF6200A87407 /* ArtVisTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 83120BE015B8DF6200A87407 /* Build configuration list for PBXNativeTarget "GalleryTest" */;
+			buildConfigurationList = 83120BE015B8DF6200A87407 /* Build configuration list for PBXNativeTarget "ArtVisTest" */;
 			buildPhases = (
 				83120B7E15B8DF6200A87407 /* Sources */,
 				83120BC015B8DF6200A87407 /* Frameworks */,
@@ -683,14 +684,14 @@
 			);
 			dependencies = (
 			);
-			name = GalleryTest;
+			name = ArtVisTest;
 			productName = Gallery;
-			productReference = 83120BE315B8DF6200A87407 /* GalleryTest.app */;
+			productReference = 83120BE315B8DF6200A87407 /* ArtVisTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		839E338B156B09530080DD05 /* Gallery */ = {
+		839E338B156B09530080DD05 /* ArtVis */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 839E33B5156B09530080DD05 /* Build configuration list for PBXNativeTarget "Gallery" */;
+			buildConfigurationList = 839E33B5156B09530080DD05 /* Build configuration list for PBXNativeTarget "ArtVis" */;
 			buildPhases = (
 				839E3388156B09530080DD05 /* Sources */,
 				839E3389156B09530080DD05 /* Frameworks */,
@@ -700,9 +701,9 @@
 			);
 			dependencies = (
 			);
-			name = Gallery;
+			name = ArtVis;
 			productName = Gallery;
-			productReference = 839E338C156B09530080DD05 /* Gallery.app */;
+			productReference = 839E338C156B09530080DD05 /* ArtVis.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -714,7 +715,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Chris Bower Consulting";
 			};
-			buildConfigurationList = 839E3386156B09520080DD05 /* Build configuration list for PBXProject "Gallery" */;
+			buildConfigurationList = 839E3386156B09520080DD05 /* Build configuration list for PBXProject "ArtVis" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -726,8 +727,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				839E338B156B09530080DD05 /* Gallery */,
-				83120B7D15B8DF6200A87407 /* GalleryTest */,
+				839E338B156B09530080DD05 /* ArtVis */,
+				83120B7D15B8DF6200A87407 /* ArtVisTest */,
 			);
 		};
 /* End PBXProject section */
@@ -972,13 +973,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Bower (F3FTPSH6SD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Bower (F3FTPSH6SD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gallery/GalleryTest-Prefix.pch";
-				INFOPLIST_FILE = "Gallery copy-Info.plist";
+				GCC_PREFIX_HEADER = "Gallery/ArtVisTest-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Dropbox/Documents/iPhoneApps/Gallery/ArtVis-test.info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Gallery/Libraries\"",
 				);
-				PRODUCT_NAME = GalleryTest;
+				PRODUCT_NAME = ArtVisTest;
 				PROVISIONING_PROFILE = "B6E2A8E6-3F60-44C7-9EE7-5A6B840CB6B0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B6E2A8E6-3F60-44C7-9EE7-5A6B840CB6B0";
 				WRAPPER_EXTENSION = app;
@@ -991,13 +992,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gallery/GalleryTest-Prefix.pch";
-				INFOPLIST_FILE = "Gallery copy-Info.plist";
+				GCC_PREFIX_HEADER = "Gallery/ArtVisTest-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/../../Dropbox/Documents/iPhoneApps/Gallery/ArtVis-test.info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Gallery/Libraries\"",
 				);
-				PRODUCT_NAME = GalleryTest;
+				PRODUCT_NAME = ArtVisTest;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
@@ -1055,13 +1056,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chris Bower (F3FTPSH6SD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chris Bower (F3FTPSH6SD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gallery/Gallery-Prefix.pch";
-				INFOPLIST_FILE = "Gallery/Gallery-Info.plist";
+				GCC_PREFIX_HEADER = "Gallery/ArtVis-Prefix.pch";
+				INFOPLIST_FILE = "Gallery/ArtVis-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Gallery/Libraries\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArtVis;
 				PROVISIONING_PROFILE = "F41419A0-E0FC-439C-B6ED-FAC2FADE0905";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F41419A0-E0FC-439C-B6ED-FAC2FADE0905";
 				WRAPPER_EXTENSION = app;
@@ -1074,13 +1075,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Gallery/Gallery-Prefix.pch";
-				INFOPLIST_FILE = "Gallery/Gallery-Info.plist";
+				GCC_PREFIX_HEADER = "Gallery/ArtVis-Prefix.pch";
+				INFOPLIST_FILE = "Gallery/ArtVis-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Gallery/Libraries\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ArtVis;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
@@ -1090,7 +1091,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		83120BE015B8DF6200A87407 /* Build configuration list for PBXNativeTarget "GalleryTest" */ = {
+		83120BE015B8DF6200A87407 /* Build configuration list for PBXNativeTarget "ArtVisTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83120BE115B8DF6200A87407 /* Debug */,
@@ -1099,7 +1100,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		839E3386156B09520080DD05 /* Build configuration list for PBXProject "Gallery" */ = {
+		839E3386156B09520080DD05 /* Build configuration list for PBXProject "ArtVis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				839E33B3156B09530080DD05 /* Debug */,
@@ -1108,7 +1109,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		839E33B5156B09530080DD05 /* Build configuration list for PBXNativeTarget "Gallery" */ = {
+		839E33B5156B09530080DD05 /* Build configuration list for PBXNativeTarget "ArtVis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				839E33B6156B09530080DD05 /* Debug */,

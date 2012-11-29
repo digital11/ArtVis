@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "83120B7D15B8DF6200A87407"
-               BuildableName = "GalleryTest.app"
-               BlueprintName = "GalleryTest"
-               ReferencedContainer = "container:Gallery.xcodeproj">
+               BuildableName = "ArtVisTest.app"
+               BlueprintName = "ArtVisTest"
+               ReferencedContainer = "container:ArtVis.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83120B7D15B8DF6200A87407"
-            BuildableName = "GalleryTest.app"
-            BlueprintName = "GalleryTest"
-            ReferencedContainer = "container:Gallery.xcodeproj">
+            BuildableName = "ArtVisTest.app"
+            BlueprintName = "ArtVisTest"
+            ReferencedContainer = "container:ArtVis.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -47,15 +47,14 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      enableOpenGLFrameCaptureMode = "0"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83120B7D15B8DF6200A87407"
-            BuildableName = "GalleryTest.app"
-            BlueprintName = "GalleryTest"
-            ReferencedContainer = "container:Gallery.xcodeproj">
+            BuildableName = "ArtVisTest.app"
+            BlueprintName = "ArtVisTest"
+            ReferencedContainer = "container:ArtVis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83120B7D15B8DF6200A87407"
-            BuildableName = "GalleryTest.app"
-            BlueprintName = "GalleryTest"
-            ReferencedContainer = "container:Gallery.xcodeproj">
+            BuildableName = "ArtVisTest.app"
+            BlueprintName = "ArtVisTest"
+            ReferencedContainer = "container:ArtVis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
